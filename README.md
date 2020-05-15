@@ -6,7 +6,14 @@
 
 ## Description
 
+Welcome to Peppa's World!
+
+Add a word and define it. Once the word and the definition are added check them out in Peppa's World! Add as many words to help grow Peppa's world super duper big! 
+
 ## Setup/Installation Requirements
+
+## Specifications 
+
 
 ## Known Bugs
 
@@ -18,9 +25,9 @@ _If you have any questions or any issues please feel free to submit an issue her
 
 ## Technologies Used
 
-_Ruby_
-_Gem_
-_Sinatra_
-_Pry_
-_Capybara_
-_Heroku_
+* _Ruby_
+* _Gem_
+* _Sinatra_
+* _Pry_
+* _Capybara_
+* _Heroku_
