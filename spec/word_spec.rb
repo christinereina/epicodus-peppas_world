@@ -1,8 +1,8 @@
-require 'rspec'
-require 'word'
-require 'definition'
+require'rspec'
+require'word'
+require'pry'
 
-describe '#Word' do
+describe Word do
 
   before(:each) do
     Word.clear()
@@ -10,11 +10,9 @@ describe '#Word' do
 
   describe('#save') do
     it("saves a word") do
-      word1 = Word.new("Pink". nil)
-      word1.save()
-      word2 = Word.new("Pig", nil)
-      word2.save()
-      expect(Word.all).to(eq([word, word2]))
+      word = Word.new("Gold", nil)
+      word.save()
+      expect(Word.all).to(eq([word]))
     end
   end
 
@@ -26,10 +24,8 @@ describe '#Word' do
 
   describe('.clear') do
     it("clears all words") do
-      word1 = Word.new("Pink". nil)
-      word1.save()
-      word2 = Word.new("Pig", nil)
-      word2.save()
+      word = Word.new("Gold", nil)
+      word.save()
       Word.clear()
       expect(Word.all).to(eq([]))
     end
@@ -37,38 +33,30 @@ describe '#Word' do
 
   describe('#==') do
     it("is the same word if it has the same attributes as another word") do
-      word1 = Word.new("Pink". nil)
-      word2 = Word.new("Pig", nil)
-      expect(word1).to(eq(word1))
+      word = Word.new("Gold", nil)
+      word2 = Word.new("Pink", nil)
+      expect(word).to(eq(word))
     end
   end
-  
+
   describe('#update') do
-    it("updates an word by id") do
-      word1 = Word.new("Pink". nil)
-      word1.save()
-      word1.update("Peppa")
-      expect(word1.name).to(eq("Peppa", nil))
-    end
+    it ("updates an word by id") do
+      word = Word.new("Gold", nil)
+      word.save()
+      word.update("Golden")
+      expect(word.word).to(eq("Golden"))
   end
+end
 
-  describe('#delete') do
-    it("deletes an word by id") do
-      word1 = Word.new("Pink". nil)
-      word1.save()
-      word2 = Word.new("Pig", nil)
-      word2.save()
-      word1.delete()
-      expect(Word.all).to(eq([word2]))
-    end
+describe('#delete') do
+  it("deletes an word by id") do
+    word = Word.new("Gold", nil)
+    word.save()
+    word2 = Word.new("Golden", nil)
+    word2.save()
+    word.delete()
+    expect(Word.all).to(eq([word2]))
   end
-
-  describe('initialize') do
-    it('it initializes newly added word') do
-      word1 = Word.new("Pink". nil)
-      word1.save()
-      expect(word1.name).to(eq("Pink"))
-    end
-  end
+end
 
 end
