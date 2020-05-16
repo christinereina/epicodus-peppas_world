@@ -1,6 +1,7 @@
 require 'pry'
 
 class Definition
+
   attr_reader :id
   attr_accessor :definition, :word_id
 
@@ -11,6 +12,7 @@ class Definition
     @definition = attributes.fetch(:definition)
     @id = attributes.fetch(:id) || @@total_rows += 1
     @word_id = attributes.fetch(:word_id)
+  
   end
 
   def ==(definition_to_compare)
@@ -22,17 +24,16 @@ class Definition
   end
 
   def save
-    @@definitions[self.id] = Word.new(self.definition, self.word_id, self.id)
+    @@definitions[self.id] = Definition.new({ :definition => self.definition, :id => self.id, :word_id => self.word_id})
   end
 
   def self.find(id)
     @@definitions[id]
   end
 
-  def update(word, word_id)
-    self.word = word
-    self.word_id = word_id
-    @@definitions[self.id] = Definition.new(self.word, self.word_id, self.id)
+  def update(definition)
+    self.definition = definition
+    self.save
   end
 
   def delete
@@ -47,7 +48,7 @@ class Definition
     definitions = []
     @@definitions.values.each do |definition|
       if definition.word_id == wor_id
-        definitions.push(definition)
+        find_definitions.push(definition)
       end
     end
     definitions

@@ -10,7 +10,7 @@ class Word
 
   def initialize(attributes)
     @word = attributes.fetch(:word)
-    @id = id || @@total_rows += 1
+    @id = attributes.fetch(:id) || @@total_rows += 1
   end
 
   def save
